@@ -57,16 +57,17 @@ class MainState extends MusicBeatState
 		doShit.scale.set(2.7, 2.7);
 		add(doShit);
 
-		bitInput = new FlxUIDropDownMenuCustom(doShit.x - 500, doShit.y, FlxUIDropDownMenuCustom.makeStrIdLabelArray(["64", "32"], true), function(nerd:String)
-		{
-			var dude = Std.parseInt(nerd);
-			if (dude == 0)
-				bit = 64;
-			else
-				bit = 32;
+		bitInput = new FlxUIDropDownMenuCustom(doShit.x - 500, doShit.y, FlxUIDropDownMenuCustom.makeStrIdLabelArray(["64bit", "32bit"], true),
+			function(nerd:String)
+			{
+				var dude = Std.parseInt(nerd);
+				if (dude == 0)
+					bit = 64;
+				else
+					bit = 32;
 
-			tracev2('normal: $bit | normalv2: $nerd');
-		});
+				tracev2('normal: $bit | normalv2: $nerd');
+			});
 		add(bitInput);
 
 		laSexyBar = new FlxSprite((FlxG.width - 200) / 2, (FlxG.height - 20) / 2);
@@ -118,7 +119,7 @@ class MainState extends MusicBeatState
 		doShit.visible = false;
 		tracev2('Download Progress: $rounded%');
 		// laSexyBar.scale.x = fuck;
-		//fileRef.removeEventListener(ProgressEvent.PROGRESS, progress);
+		// fileRef.removeEventListener(ProgressEvent.PROGRESS, progress);
 	}
 
 	private function complete(event:Event):Void
@@ -127,7 +128,6 @@ class MainState extends MusicBeatState
 		doShit.visible = true;
 		tracev2("Download Completed >w<");
 
-		
 		fileRef.removeEventListener(Event.COMPLETE, complete);
 		fileRef.removeEventListener(ProgressEvent.PROGRESS, progress);
 		fileRef.removeEventListener(Event.CLOSE, complete);
