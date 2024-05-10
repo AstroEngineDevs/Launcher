@@ -1,6 +1,5 @@
 package game.states;
 
-import flixel.addons.ui.FlxUIInputText;
 import openfl.events.ProgressEvent;
 import openfl.net.URLRequest;
 import openfl.events.IOErrorEvent;
