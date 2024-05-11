@@ -31,13 +31,17 @@ class MainState extends MusicBeatState
 	private var newVersion:String;
 	private var doShit:FlxButton;
 	private var bitInput:FlxUIDropDownMenuCustom;
-	private final repo = Repository.getReleases('Hackx2', 'FNF-AstroEngine');
+	private final repo = Repository.getReleases('AstroEngineDevs', 'FNF-AstroEngine');
 	private var fileRef:FileReference;
 
 	override function create()
 	{
-		BG = new FlxSprite().loadGraphic(Paths.image('bgs/lightNormal'));
-		BG.scrollFactor.set(FlxG.mouse.x, FlxG.mouse.y);
+		BG = new FlxSprite().loadGraphic(Paths.image('bgs/LightFrosted'));
+		BG.screenCenter();
+		add(BG);
+
+		BG = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0xFF000000);
+		BG.alpha = 0.54;
 		BG.screenCenter();
 		add(BG);
 
@@ -98,18 +102,16 @@ class MainState extends MusicBeatState
 		urlRequest = new URLRequest(downloadURL);
 		fileRef.addEventListener(Event.COMPLETE, complete);
 		fileRef.addEventListener(ProgressEvent.PROGRESS, progress);
-		fileRef.addEventListener(Event.CLOSE, complete);
+		fileRef.addEventListener(Event.CANCEL, complete);
 
 		fileRef.download(urlRequest, 'AstroEngine${bit}bit.zip');
-
 		tracev2("Downloading >w<");
 	}
 
 	private function progress(event:ProgressEvent):Void
 	{
-		var fuck:Float = event.bytesLoaded / event.bytesTotal;
-		var rounded:Float = Math.round((fuck) * 100);
-		var lastPer = rounded;
+		final fuck:Float = event.bytesLoaded / event.bytesTotal;
+		final rounded:Float = Math.round((fuck) * 100);
 
 		FlxG.watch.addQuick("Downloaded Percent: ", rounded);
 
