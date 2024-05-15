@@ -119,8 +119,6 @@ class MainState extends MusicBeatState
 		downloadPercent.text = '${rounded}%';
 		doShit.visible = false;
 		tracev2('Download Progress: $rounded%');
-		// laSexyBar.scale.x = fuck;
-		// fileRef.removeEventListener(ProgressEvent.PROGRESS, progress);
 	}
 
 	private function complete(event:Event):Void
