@@ -6,3 +6,5 @@ it reinstalls the game to program files and creates a shortcut on you desktop :3
 
 
 dude is ass
+
+redo in typescript
